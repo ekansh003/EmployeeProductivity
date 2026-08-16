@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="hero" style="background-image: url('{{ url_for('static', filename='home.png') }}'); background-size: cover; background-position: center; min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center;">
+    <div style="background: rgba(0,0,0,0.6); padding: 40px; border-radius: 12px; color: white;">
+        <h1 style="font-size: 3em; margin-bottom: 20px;">Employee Productivity Prediction</h1>
+        <p style="font-size: 1.2em;">Leverage machine learning to assess employee performance and enhance productivity across your organization.</p>
+        <a href="/predict" style="margin-top: 20px; display: inline-block; background-color: #28a745; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">Predict Now</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    .predict-bg {
+        background-image: url('{{ url_for("static", filename="form.png") }}');
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        padding: 60px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form-container {
+        background-color: rgba(255, 255, 255, 0.92);
+        padding: 40px;
+        border-radius: 16px;
+        max-width: 850px;
+        width: 100%;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .form-container h2 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .form-container form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .form-container button {
+        grid-column: span 2;
+        justify-self: center;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="predict-bg">
+    <div class="form-container">
+        <h2>Enter Employee Details</h2>
+        <form action="/pred" method="POST">
+            <input type="text" name="quarter" placeholder="Quarter" required>
+            <input type="text" name="department" placeholder="Department" required>
+            <input type="text" name="day" placeholder="Day" required>
+            <input type="text" name="team" placeholder="Team" required>
+            <input type="text" name="targeted_productivity" placeholder="Targeted Productivity" required>
+            <input type="text" name="smv" placeholder="SMV" required>
+            <input type="text" name="over_time" placeholder="Over Time" required>
+            <input type="text" name="incentive" placeholder="Incentive" required>
+            <input type="text" name="idle_time" placeholder="Idle Time" required>
+            <input type="text" name="idle_men" placeholder="Idle Men" required>
+            <input type="text" name="no_of_style_change" placeholder="No. of Style Change" required>
+            <input type="text" name="no_of_workers" placeholder="No. of Workers" required>
+            <input type="text" name="month" placeholder="Month" required>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

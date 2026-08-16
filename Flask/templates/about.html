@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    .about-section {
+        background-image: url('{{ url_for("static", filename="about.png") }}');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 20px;
+        color: white;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    }
+
+    .about-text {
+        max-width: 800px;
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 30px;
+        border-radius: 12px;
+        font-size: 1.2em;
+        line-height: 1.8;
+    }
+</style>
+
+<div class="about-section">
+    <div class="about-text">
+        <h2 style="text-align: center;">About the Project</h2>
+        <p>
+            Employees are the most valuable asset of any organization. Their productivity directly impacts
+            operational efficiency and business growth. Companies that monitor and enhance employee performance
+            gain a competitive advantage through improved outcomes.
+        </p>
+        <p>
+            This project utilizes machine learning to predict the productivity level of employees based on
+            various measurable parameters such as overtime, incentive, team size, idle time, and more.
+        </p>
+        <p>
+            With data-driven insights, organizations can optimize task distribution, support low-performing teams,
+            and reward high achievers.
+        </p>
+    </div>
+</div>
+{% endblock %}
