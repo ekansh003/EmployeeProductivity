@@ -1,64 +1,295 @@
-{% extends "base.html" %}
-{% block content %}
-<style>
-    .predict-bg {
-        background-image: url('{{ url_for("static", filename="form.png") }}');
-        background-size: cover;
-        background-position: center;
-        min-height: 100vh;
-        padding: 60px 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+{% extends "base.html" %} {% block title %}Employee Productivity | Predict{%
+endblock %} {% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='predict.css') }}" />
+{% endblock %} {% block content %}
 
-    .form-container {
-        background-color: rgba(255, 255, 255, 0.92);
-        padding: 40px;
-        border-radius: 16px;
-        max-width: 850px;
-        width: 100%;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    }
+<section class="predict-header">
+  <div class="container">
+    <div class="predict-header-content">
+      <span class="eyebrow">Prediction</span>
 
-    .form-container h2 {
-        text-align: center;
-        margin-bottom: 30px;
-    }
+      <h1>
+        Evaluate<br />
+        <span>productivity.</span>
+      </h1>
 
-    .form-container form {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-    }
-
-    .form-container button {
-        grid-column: span 2;
-        justify-self: center;
-        margin-top: 20px;
-    }
-</style>
-
-<div class="predict-bg">
-    <div class="form-container">
-        <h2>Enter Employee Details</h2>
-        <form action="/pred" method="POST">
-            <input type="text" name="quarter" placeholder="Quarter" required>
-            <input type="text" name="department" placeholder="Department" required>
-            <input type="text" name="day" placeholder="Day" required>
-            <input type="text" name="team" placeholder="Team" required>
-            <input type="text" name="targeted_productivity" placeholder="Targeted Productivity" required>
-            <input type="text" name="smv" placeholder="SMV" required>
-            <input type="text" name="over_time" placeholder="Over Time" required>
-            <input type="text" name="incentive" placeholder="Incentive" required>
-            <input type="text" name="idle_time" placeholder="Idle Time" required>
-            <input type="text" name="idle_men" placeholder="Idle Men" required>
-            <input type="text" name="no_of_style_change" placeholder="No. of Style Change" required>
-            <input type="text" name="no_of_workers" placeholder="No. of Workers" required>
-            <input type="text" name="month" placeholder="Month" required>
-
-            <button type="submit" class="btn btn-success">Submit</button>
-        </form>
+      <p class="predict-description">
+        Enter the employee's workforce and production details. The trained
+        XGBoost model will estimate the employee's productivity level.
+      </p>
     </div>
-</div>
+  </div>
+</section>
+
+<section class="predict-form-section">
+  <div class="container">
+    <form action="/pred" method="POST" class="prediction-form">
+      <!-- =====================================
+           01 — WORK CONTEXT
+      ====================================== -->
+
+      <div class="form-group">
+        <div class="form-group-header">
+          <span class="form-number">01</span>
+          <h2>Work Context</h2>
+        </div>
+
+        <div class="form-grid">
+          <!-- Quarter -->
+          <div class="form-field">
+            <label for="quarter">Quarter</label>
+
+            <select id="quarter" name="quarter" required>
+              <option value="" disabled selected>Select quarter</option>
+
+              <option value="Quarter1">Quarter 1</option>
+              <option value="Quarter2">Quarter 2</option>
+              <option value="Quarter3">Quarter 3</option>
+              <option value="Quarter4">Quarter 4</option>
+              <option value="Quarter5">Quarter 5</option>
+            </select>
+          </div>
+
+          <!-- Department -->
+          <div class="form-field">
+            <label for="department">Department</label>
+
+            <select id="department" name="department" required>
+              <option value="" disabled selected>Select department</option>
+
+              <option value="finishing">Finishing</option>
+              <option value="sweing">Sewing</option>
+            </select>
+          </div>
+
+          <!-- Day -->
+          <div class="form-field">
+            <label for="day">Day</label>
+
+            <select id="day" name="day" required>
+              <option value="" disabled selected>Select day</option>
+
+              <option value="Monday">Monday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Saturday">Saturday</option>
+              <option value="Sunday">Sunday</option>
+            </select>
+          </div>
+
+          <!-- Team -->
+          <div class="form-field">
+            <label for="team">Team</label>
+
+            <input
+              type="number"
+              id="team"
+              name="team"
+              min="1"
+              max="12"
+              step="1"
+              placeholder="1 – 12"
+              required
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================
+           02 — PRODUCTIVITY METRICS
+      ====================================== -->
+
+      <div class="form-group">
+        <div class="form-group-header">
+          <span class="form-number">02</span>
+          <h2>Productivity Metrics</h2>
+        </div>
+
+        <div class="form-grid">
+          <!-- Targeted Productivity -->
+          <div class="form-field">
+            <label for="targeted_productivity"> Targeted Productivity </label>
+
+            <input
+              type="number"
+              id="targeted_productivity"
+              name="targeted_productivity"
+              min="0.07"
+              max="0.80"
+              step="0.01"
+              placeholder="e.g. 0.75"
+              required
+            />
+          </div>
+
+          <!-- SMV -->
+          <div class="form-field">
+            <label for="smv">SMV</label>
+
+            <input
+              type="number"
+              id="smv"
+              name="smv"
+              min="2.9"
+              max="54.56"
+              step="0.01"
+              placeholder="e.g. 14.61"
+              required
+            />
+          </div>
+
+          <!-- Over Time -->
+          <div class="form-field">
+            <label for="over_time">Over Time</label>
+
+            <input
+              type="number"
+              id="over_time"
+              name="over_time"
+              min="0"
+              max="25920"
+              step="1"
+              placeholder="e.g. 5820"
+              required
+            />
+          </div>
+
+          <!-- Incentive -->
+          <div class="form-field">
+            <label for="incentive">Incentive</label>
+
+            <input
+              type="number"
+              id="incentive"
+              name="incentive"
+              min="0"
+              max="3600"
+              step="1"
+              placeholder="e.g. 55"
+              required
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================
+           03 — WORKFORCE METRICS
+      ====================================== -->
+
+      <div class="form-group">
+        <div class="form-group-header">
+          <span class="form-number">03</span>
+          <h2>Workforce Metrics</h2>
+        </div>
+
+        <div class="form-grid">
+          <!-- Idle Time -->
+          <div class="form-field">
+            <label for="idle_time">Idle Time</label>
+
+            <input
+              type="number"
+              id="idle_time"
+              name="idle_time"
+              min="0"
+              max="300"
+              step="0.1"
+              placeholder="e.g. 4"
+              required
+            />
+          </div>
+
+          <!-- Idle Men -->
+          <div class="form-field">
+            <label for="idle_men">Idle Men</label>
+
+            <input
+              type="number"
+              id="idle_men"
+              name="idle_men"
+              min="0"
+              max="45"
+              step="1"
+              placeholder="e.g. 10"
+              required
+            />
+          </div>
+
+          <!-- Style Changes -->
+          <div class="form-field">
+            <label for="no_of_style_change"> No. of Style Change </label>
+
+            <input
+              type="number"
+              id="no_of_style_change"
+              name="no_of_style_change"
+              min="0"
+              max="2"
+              step="1"
+              placeholder="0 – 2"
+              required
+            />
+          </div>
+
+          <!-- Workers -->
+          <div class="form-field">
+            <label for="no_of_workers"> No. of Workers </label>
+
+            <input
+              type="number"
+              id="no_of_workers"
+              name="no_of_workers"
+              min="2"
+              max="89"
+              step="0.1"
+              placeholder="e.g. 55"
+              required
+            />
+          </div>
+
+          <!-- Month -->
+          <div class="form-field">
+            <label for="month">Month</label>
+
+            <select id="month" name="month" required>
+              <option value="" disabled selected>Select month</option>
+
+              <option value="1">January</option>
+              <option value="2">February</option>
+              <option value="3">March</option>
+              <option value="4">April</option>
+              <option value="5">May</option>
+              <option value="6">June</option>
+              <option value="7">July</option>
+              <option value="8">August</option>
+              <option value="9">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================
+           SUBMIT
+      ====================================== -->
+
+      <div class="form-submit">
+        <div>
+          <button type="submit" class="btn btn-primary">
+            Predict Productivity
+            <span>→</span>
+          </button>
+
+          <p class="form-note">
+            Prediction generated using the trained XGBoost model.
+          </p>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
 {% endblock %}

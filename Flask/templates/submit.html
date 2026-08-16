@@ -1,8 +1,86 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="result-section" style="background-image: url('/static/result.png');">
-    <div class="result-text">
-        <h2>{{ result }}</h2>
+{% extends "base.html" %} {% block title %}Employee Productivity | Result{%
+endblock %} {% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}" />
+{% endblock %} {% block content %}
+
+<section class="result-page">
+  <div class="container">
+    <!-- =====================================
+         RESULT HEADER
+    ====================================== -->
+
+    <div class="result-header">
+      <div class="result-heading">
+        <span class="eyebrow">Prediction Result</span>
+
+        <h1>
+          Your productivity<br />
+          estimate<span>.</span>
+        </h1>
+      </div>
+
+      <div class="result-index">
+        <strong>03</strong>
+
+        <div class="index-line"></div>
+
+        <span>RESULT</span>
+      </div>
     </div>
-</div>
+
+    <!-- =====================================
+         RESULT CARD
+    ====================================== -->
+
+    <div class="result-card">
+      <!-- LEFT -->
+      <div class="result-score">
+        <span class="result-label"> Predicted Productivity </span>
+
+        <div class="score">{{ "%.3f"|format(prediction) }}</div>
+
+        <div class="score-divider"></div>
+
+        <div class="result-level">{{ level }}.</div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="result-info">
+        <div class="result-info-top">
+          <div class="result-icon">↗</div>
+
+          <p>
+            Based on the workforce and production details provided, the trained
+            XGBoost model estimates this employee's productivity at
+            <strong> {{ "%.1f"|format(prediction * 100) }}%. </strong>
+          </p>
+        </div>
+
+        <div class="result-info-divider"></div>
+
+        <p class="result-note">
+          This prediction is generated from the trained machine learning model
+          and should be interpreted as an estimate.
+        </p>
+      </div>
+    </div>
+
+    <!-- =====================================
+         ACTIONS
+    ====================================== -->
+
+    <div class="result-actions">
+      <a href="/predict" class="result-primary-btn">
+        New Prediction
+        <span>→</span>
+      </a>
+
+      <a href="/" class="result-secondary-btn">
+        Back to Home
+        <span>→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 {% endblock %}

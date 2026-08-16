@@ -1,46 +1,199 @@
-{% extends "base.html" %}
-{% block content %}
-<style>
-    .about-section {
-        background-image: url('{{ url_for("static", filename="about.png") }}');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 60px 20px;
-        color: white;
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-    }
+{% extends "base.html" %} {% block title %}Employee Productivity | About{%
+endblock %} {% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}" />
+{% endblock %} {% block content %}
 
-    .about-text {
-        max-width: 800px;
-        background-color: rgba(0, 0, 0, 0.6);
-        padding: 30px;
-        border-radius: 12px;
-        font-size: 1.2em;
-        line-height: 1.8;
-    }
-</style>
+<section class="about-hero">
+  <div class="container">
+    <div class="about-hero-content">
+      <span class="eyebrow">About the Project</span>
 
-<div class="about-section">
-    <div class="about-text">
-        <h2 style="text-align: center;">About the Project</h2>
-        <p>
-            Employees are the most valuable asset of any organization. Their productivity directly impacts
-            operational efficiency and business growth. Companies that monitor and enhance employee performance
-            gain a competitive advantage through improved outcomes.
-        </p>
-        <p>
-            This project utilizes machine learning to predict the productivity level of employees based on
-            various measurable parameters such as overtime, incentive, team size, idle time, and more.
-        </p>
-        <p>
-            With data-driven insights, organizations can optimize task distribution, support low-performing teams,
-            and reward high achievers.
-        </p>
+      <h1>
+        Productivity,<br />
+        <span>measured with data.</span>
+      </h1>
+
+      <p class="about-hero-description">
+        Employee productivity has a direct impact on operational efficiency and
+        business outcomes. This project uses machine learning to estimate
+        productivity from measurable workforce and production factors.
+      </p>
     </div>
-</div>
+  </div>
+</section>
+
+<section class="about-intro">
+  <div class="container">
+    <div class="about-intro-grid">
+      <div>
+        <span class="about-label">01 / Why this project</span>
+      </div>
+
+      <div class="about-intro-content">
+        <h2>Turning workforce data into insight.</h2>
+
+        <p>
+          Employees are one of the most valuable assets of an organization.
+          Understanding the factors that influence productivity can help
+          organizations make better operational decisions.
+        </p>
+
+        <p>
+          This application provides a simple interface where workforce and
+          production metrics can be entered and processed by a trained machine
+          learning model to estimate employee productivity.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="model-section">
+  <div class="container">
+    <div class="model-heading">
+      <span class="eyebrow">02 / Model</span>
+
+      <h2>
+        From input data<br />
+        to prediction.
+      </h2>
+
+      <p>
+        The application uses an XGBoost regression model trained to estimate the
+        employee productivity value.
+      </p>
+    </div>
+
+    <div class="model-grid">
+      <article class="model-card">
+        <span class="model-number">01</span>
+
+        <h3>Input</h3>
+
+        <p>
+          Workforce, production and productivity metrics are provided through
+          the prediction form.
+        </p>
+      </article>
+
+      <article class="model-card">
+        <span class="model-number">02</span>
+
+        <h3>XGBoost</h3>
+
+        <p>
+          The trained XGBoost regression model processes the supplied features
+          and generates a prediction.
+        </p>
+      </article>
+
+      <article class="model-card">
+        <span class="model-number">03</span>
+
+        <h3>Classification</h3>
+
+        <p>
+          The predicted value is mapped to one of three productivity levels
+          using defined thresholds.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="features-section">
+  <div class="container">
+    <div class="features-header">
+      <div>
+        <span class="eyebrow">03 / Input Features</span>
+
+        <h2>
+          What the model<br />
+          looks at.
+        </h2>
+      </div>
+
+      <p>
+        Thirteen measurable variables are supplied to the trained model for each
+        prediction.
+      </p>
+    </div>
+
+    <div class="feature-groups">
+      <div class="feature-group">
+        <h3>
+          <span>01</span>
+          Work Context
+        </h3>
+
+        <ul class="feature-list">
+          <li>Quarter</li>
+          <li>Department</li>
+          <li>Day</li>
+          <li>Team</li>
+        </ul>
+      </div>
+
+      <div class="feature-group">
+        <h3>
+          <span>02</span>
+          Productivity
+        </h3>
+
+        <ul class="feature-list">
+          <li>Targeted Productivity</li>
+          <li>SMV</li>
+          <li>Over Time</li>
+          <li>Incentive</li>
+        </ul>
+      </div>
+
+      <div class="feature-group">
+        <h3>
+          <span>03</span>
+          Workforce
+        </h3>
+
+        <ul class="feature-list">
+          <li>Idle Time</li>
+          <li>Idle Men</li>
+          <li>No. of Style Change</li>
+          <li>No. of Workers</li>
+          <li>Month</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tech-section">
+  <div class="container">
+    <span class="eyebrow">04 / Technology</span>
+
+    <h2>Built with.</h2>
+
+    <div class="tech-list">
+      <div class="tech-item">
+        <span>Language</span>
+        <h3>Python</h3>
+      </div>
+
+      <div class="tech-item">
+        <span>Backend</span>
+        <h3>Flask</h3>
+      </div>
+
+      <div class="tech-item">
+        <span>Machine Learning</span>
+        <h3>XGBoost</h3>
+      </div>
+
+      <div class="tech-item">
+        <span>Frontend</span>
+        <h3>HTML / CSS</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock %}

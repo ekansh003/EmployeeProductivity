@@ -1,21 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Employee Productivity Prediction Using ML</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <div class="navbar">
-        <h2>Employee Productivity Prediction Using ML</h2>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{% block title %}Employee Productivity{% endblock %}</title>
+
+    <meta
+      name="description"
+      content="Employee productivity prediction powered by machine learning."
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    {% block page_css %}{% endblock %}
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="navbar">
+        <a href="/" class="brand">
+          <span class="brand-mark">EP</span>
+          <span class="brand-name">Employee Productivity</span>
+        </a>
+
         <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/predict">Predict</a>
+          <a href="/" class="nav-link">Home</a>
+          <a href="/about" class="nav-link">About</a>
+          <a href="/predict" class="nav-link nav-cta">Predict</a>
         </div>
-    </div>
-    <div class="content">
-        {% block content %}{% endblock %}
-    </div>
-</body>
+      </nav>
+    </header>
+
+    <main class="site-main">{% block content %}{% endblock %}</main>
+  </body>
 </html>

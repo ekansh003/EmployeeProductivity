@@ -1,0 +1,416 @@
+/* ========================================
+   RESULT — PAGE
+======================================== */
+
+.result-page {
+  padding: 58px 0 55px;
+}
+
+/* ========================================
+   RESULT — HEADER
+======================================== */
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  max-width: 950px;
+  margin: 0 auto 30px;
+}
+
+.result-heading {
+  max-width: 720px;
+}
+
+.result-heading h1 {
+  margin-top: 18px;
+
+  font-size: clamp(3.2rem, 5vw, 5rem);
+  line-height: 0.94;
+  letter-spacing: -0.06em;
+
+  color: var(--black);
+}
+
+.result-heading h1 span {
+  color: var(--blue);
+}
+
+/* ========================================
+   RESULT — INDEX
+======================================== */
+
+.result-index {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 28px;
+  margin-right: 35px;
+}
+
+.result-index strong {
+  color: var(--blue);
+
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.index-line {
+  width: 1px;
+  height: 18px;
+
+  margin: 5px 0;
+
+  background: var(--border);
+}
+
+.result-index span {
+  color: var(--gray-600);
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+/* ========================================
+   RESULT — CARD
+======================================== */
+
+.result-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  max-width: 950px;
+  min-height: 300px;
+
+  margin: 0 auto;
+
+  border: 1px solid #dcdcdc;
+  border-radius: 14px;
+
+  background: var(--white);
+
+  overflow: hidden;
+}
+
+/* ========================================
+   SCORE
+======================================== */
+
+.result-score {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 38px 48px;
+}
+
+.result-label {
+  color: var(--gray-600);
+
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.score {
+  margin-top: 18px;
+
+  color: var(--blue);
+
+  font-size: clamp(4rem, 7vw, 6.2rem);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+}
+
+.score-divider {
+  width: 80%;
+  height: 1px;
+
+  margin: 22px 0 20px;
+
+  background: var(--border);
+}
+
+.result-level {
+  color: var(--blue);
+
+  font-size: 23px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+/* ========================================
+   RESULT — INFORMATION
+======================================== */
+
+.result-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 38px 48px;
+
+  border-left: 1px solid var(--border);
+}
+
+.result-info-top {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 18px;
+}
+
+.result-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 48px;
+
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--blue);
+
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.result-info p {
+  max-width: 350px;
+
+  margin: 0;
+
+  color: var(--gray-600);
+
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.result-info p strong {
+  color: var(--blue);
+
+  font-weight: 600;
+}
+
+.result-info-divider {
+  width: 100%;
+  height: 1px;
+
+  margin: 25px 0 22px;
+
+  background: var(--border);
+}
+
+.result-info .result-note {
+  color: var(--gray-600);
+
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+/* ========================================
+   RESULT — ACTIONS
+======================================== */
+
+.result-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 26px;
+
+  max-width: 950px;
+
+  margin: 28px auto 0;
+}
+
+/* ========================================
+   PRIMARY CTA
+   Same style as Home
+======================================== */
+
+.result-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-width: 165px;
+
+  padding: 16px 22px;
+
+  background: var(--black);
+  color: var(--white);
+
+  border: none;
+  border-radius: 0;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* ========================================
+   SECONDARY CTA
+   Plain text — no border
+======================================== */
+
+.result-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 16px 0;
+
+  background: transparent;
+  color: var(--black);
+
+  border: none;
+  border-radius: 0;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* ========================================
+   CTA ARROWS
+======================================== */
+
+.result-primary-btn span,
+.result-secondary-btn span {
+  margin-left: 25px;
+
+  font-size: 17px;
+
+  color: inherit;
+}
+
+/* ========================================
+   CTA HOVER
+======================================== */
+
+.result-primary-btn:hover {
+  background: var(--blue);
+  color: var(--white);
+
+  transform: translateY(-2px);
+}
+
+.result-secondary-btn:hover {
+  color: var(--blue);
+
+  transform: translateX(2px);
+}
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 800px) {
+  .result-page {
+    padding: 55px 0 60px;
+  }
+
+  .result-header {
+    margin-bottom: 28px;
+  }
+
+  .result-heading {
+    max-width: 600px;
+  }
+
+  .result-heading h1 {
+    font-size: 4rem;
+  }
+
+  .result-index {
+    margin-right: 0;
+  }
+
+  .result-card {
+    grid-template-columns: 1fr;
+  }
+
+  .result-info {
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .result-actions {
+    justify-content: flex-start;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+  .result-page {
+    padding: 45px 0 50px;
+  }
+
+  .result-header {
+    margin-bottom: 25px;
+  }
+
+  .result-heading h1 {
+    font-size: 3.2rem;
+  }
+
+  .result-index {
+    display: none;
+  }
+
+  .result-card {
+    border-radius: 12px;
+  }
+
+  .result-score,
+  .result-info {
+    padding: 28px;
+  }
+
+  .score {
+    font-size: 4.8rem;
+  }
+
+  .result-level {
+    font-size: 21px;
+  }
+
+  .result-actions {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 8px;
+
+    margin-top: 22px;
+  }
+
+  .result-primary-btn {
+    width: auto;
+  }
+
+  .result-secondary-btn {
+    padding-left: 0;
+  }
+}

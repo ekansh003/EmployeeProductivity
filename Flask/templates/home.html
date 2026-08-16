@@ -1,10 +1,149 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="hero" style="background-image: url('{{ url_for('static', filename='home.png') }}'); background-size: cover; background-position: center; min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center;">
-    <div style="background: rgba(0,0,0,0.6); padding: 40px; border-radius: 12px; color: white;">
-        <h1 style="font-size: 3em; margin-bottom: 20px;">Employee Productivity Prediction</h1>
-        <p style="font-size: 1.2em;">Leverage machine learning to assess employee performance and enhance productivity across your organization.</p>
-        <a href="/predict" style="margin-top: 20px; display: inline-block; background-color: #28a745; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">Predict Now</a>
+{% extends "base.html" %} {% block title %}Employee Productivity | Home{%
+endblock %} {% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}" />
+{% endblock %} {% block content %}
+
+<section class="home-hero">
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow">Machine Learning / Productivity</span>
+
+      <h1>
+        Employee<br />
+        Productivity<br />
+        <span>Prediction.</span>
+      </h1>
+
+      <p class="hero-description">
+        Predict employee productivity using workforce and production metrics
+        powered by an XGBoost regression model.
+      </p>
+
+      <div class="hero-actions">
+        <a href="/predict" class="btn btn-primary">
+          Start Prediction <span>→</span>
+        </a>
+
+        <a href="#how-it-works" class="text-link">
+          Learn how it works <span>→</span>
+        </a>
+      </div>
     </div>
-</div>
+
+    <div class="hero-accent">
+      <span>01</span>
+      <div></div>
+      <span>ML / XGBOOST</span>
+    </div>
+  </div>
+</section>
+
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">13</span>
+        <div>
+          <h3>Input Features</h3>
+          <p>Workforce & production metrics</p>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <span class="stat-number">01</span>
+        <div>
+          <h3>XGBoost</h3>
+          <p>Regression-based prediction model</p>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <span class="stat-number">03</span>
+        <div>
+          <h3>Outcomes</h3>
+          <p>Productivity levels generated</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process-section" id="how-it-works">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">Process</span>
+
+      <h2>
+        From workforce data<br />
+        to productivity insight.
+      </h2>
+
+      <p>
+        A simple three-step process turns employee and production metrics into a
+        productivity estimate.
+      </p>
+    </div>
+
+    <div class="process-grid">
+      <article class="process-card">
+        <span class="process-number">01</span>
+
+        <h3>Enter Data</h3>
+
+        <p>
+          Provide the employee's work context, productivity metrics and
+          workforce information.
+        </p>
+
+        <span class="card-line"></span>
+      </article>
+
+      <article class="process-card">
+        <span class="process-number">02</span>
+
+        <h3>Model Analysis</h3>
+
+        <p>
+          The trained XGBoost model processes the supplied features and
+          estimates productivity.
+        </p>
+
+        <span class="card-line"></span>
+      </article>
+
+      <article class="process-card">
+        <span class="process-number">03</span>
+
+        <h3>Get Prediction</h3>
+
+        <p>
+          The predicted productivity value is translated into an
+          easy-to-understand productivity level.
+        </p>
+
+        <span class="card-line"></span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="home-cta">
+  <div class="container">
+    <div class="cta-content">
+      <span class="eyebrow">Ready to begin?</span>
+
+      <h2>
+        Measure productivity<br />
+        with data.
+      </h2>
+
+      <a href="/predict" class="btn btn-primary">
+        Predict Productivity <span>→</span>
+      </a>
+    </div>
+
+    <span class="cta-mark">EP / 01</span>
+  </div>
+</section>
+
 {% endblock %}
